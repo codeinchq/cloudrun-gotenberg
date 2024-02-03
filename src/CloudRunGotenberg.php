@@ -25,27 +25,23 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @see https://cloud.google.com/run/docs/authenticating/service-to-service#set-up-sa
  */
-final readonly class CloudRunGotenberg
+readonly class CloudRunGotenberg
 {
-    /**
-     * @param ClientInterface $httpClient
-     */
-    public function __construct(private ClientInterface $httpClient)
-    {
-    }
+    private ClientInterface $httpClient;
 
     /**
      * @param string $cloudRunServiceUrl
      * @param string|array $serviceAccountJsonKey
-     * @return self
+     * @param HttpClientFactory $clientFactory
      */
-    public static function fromUrlAndJsonKey(string $cloudRunServiceUrl, string|array $serviceAccountJsonKey): self
-    {
-        return new self(
-            (new HttpClientFactory())->factory(
-                jsonKey: $serviceAccountJsonKey,
-                serviceUrl: $cloudRunServiceUrl
-            )
+    public function __construct(
+        string $cloudRunServiceUrl,
+        string|array $serviceAccountJsonKey,
+        HttpClientFactory $clientFactory = new HttpClientFactory()
+    ) {
+        $this->httpClient = $clientFactory->factory(
+            jsonKey: $serviceAccountJsonKey,
+            serviceUrl: $cloudRunServiceUrl
         );
     }
 
