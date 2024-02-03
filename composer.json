@@ -1,0 +1,37 @@
+{
+  "name": "codeinc/cloudrun-gotenberg",
+  "version": "v1.0",
+  "description": "Wrapper for the Gotenberg API to convert HTML to PDF",
+  "homepage": "https://github.com/codeinchq/cloudrun-gotenberg",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.2",
+    "gotenberg/gotenberg-php": "^2.0",
+    "codeinc/cloudrun-auth-http-client": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "CodeInc\\CloudrunGotenberg\\": "src"
+    }
+  },
+  "authors": [
+    {
+      "name": "Joan Fabrégat",
+      "email": "joan@codeinc.co",
+      "homepage": "https://www.codeinc.co",
+      "role": "developer"
+    }
+  ],
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.8"
+  }
+}
