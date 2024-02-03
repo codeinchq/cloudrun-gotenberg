@@ -16,6 +16,9 @@ use Gotenberg\Exceptions\GotenbergApiErrored;
 use Gotenberg\Exceptions\NativeFunctionErrored;
 use Gotenberg\Exceptions\NoOutputFileInResponse;
 use Gotenberg\Gotenberg;
+use Gotenberg\Modules\Chromium;
+use Gotenberg\Modules\LibreOffice;
+use Gotenberg\Modules\PdfEngines;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -35,7 +38,7 @@ readonly class CloudRunGotenberg
      * @param HttpClientFactory $clientFactory
      */
     public function __construct(
-        string $cloudRunServiceUrl,
+        private string $cloudRunServiceUrl,
         string|array $serviceAccountJsonKey,
         HttpClientFactory $clientFactory = new HttpClientFactory()
     ) {
@@ -69,5 +72,32 @@ readonly class CloudRunGotenberg
     public function save(RequestInterface $request, string $dirPath): string
     {
         return Gotenberg::save($request, $dirPath, $this->httpClient);
+    }
+
+    /**
+     * @alias Gotenberg::chromium()
+     * @return Chromium
+     */
+    public function chromium(): Chromium
+    {
+        return new Chromium($this->cloudRunServiceUrl);
+    }
+
+    /**
+     * @alias Gotenberg::libreOffice()
+     * @return LibreOffice
+     */
+    public function libreOffice(): LibreOffice
+    {
+        return new LibreOffice($this->cloudRunServiceUrl);
+    }
+
+    /**
+     * @alias Gotenberg::pdfEngines()
+     * @return PdfEngines
+     */
+    public function pdfEngines(): PdfEngines
+    {
+        return new PdfEngines($this->cloudRunServiceUrl);
     }
 }

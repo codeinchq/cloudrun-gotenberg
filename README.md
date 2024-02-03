@@ -21,7 +21,6 @@ _The following conversion examples are extracted from [Gotenberg PHP client docu
 
 ```php
 use CodeInc\CloudRunGotenberg\CloudRunGotenberg;
-use Gotenberg\Gotenberg;
 use Gotenberg\Stream;
 
 // Creates the Cloud Run Gotenberg client 
@@ -34,13 +33,13 @@ $cloudRunGotenberg = new CloudRunGotenberg(
 
 // Converts a target URL to PDF and saves it to a given directory.
 $filename = $cloudRunGotenberg->save(
-    Gotenberg::chromium($apiUrl)->pdf()->url('https://my.url'), 
+    $cloudRunGotenberg->chromium()->pdf()->url('https://my.url'), 
     $pathToSavingDirectory
 );
 
 // Converts Office documents to PDF and merges them.
 $response = $cloudRunGotenberg->send(
-    Gotenberg::libreOffice($apiUrl)
+    $cloudRunGotenberg->libreOffice()
         ->merge()
         ->convert(
             Stream::path($pathToDocx),
