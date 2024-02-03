@@ -17,6 +17,8 @@ This library is modeled after the [official Gotenberg PHP client](https://packag
 
 The requests are authenticated using [`codeinc/cloudrun-auth-http-client`](https://packagist.org/packages/codeinc/cloudrun-auth-http-client). A service account is required to authenticate the requests. Check [this page](https://github.com/codeinchq/cloudrun-auth-http-client?tab=readme-ov-file#usage) to learn how to create and authorized a service account and obtain the service account key.
 
+_The following conversion examples are extracted from [Gotenberg PHP client documentation](https://github.com/gotenberg/gotenberg-php?tab=readme-ov-file#quick-examples)._
+
 ```php
 use CodeInc\CloudRunGotenberg\CloudRunGotenberg;
 use Gotenberg\Gotenberg;
@@ -29,9 +31,6 @@ $cloudRunGotenberg = new CloudRunGotenberg(
     // path to your service account key or array of credentials 
     '/path/to/your/service-account-key.json' 
 );
-
-// The following examples are extracted from Gotenberg PHP client documentation
-// https://packagist.org/packages/gotenberg/gotenberg-php
 
 // Converts a target URL to PDF and saves it to a given directory.
 $filename = $cloudRunGotenberg->save(
