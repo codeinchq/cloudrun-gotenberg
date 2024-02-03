@@ -1,6 +1,6 @@
 {
   "name": "codeinc/cloudrun-gotenberg",
-  "version": "v1.0",
+  "version": "v1.1",
   "description": "Wrapper for the Gotenberg API to convert HTML to PDF",
   "homepage": "https://github.com/codeinchq/cloudrun-gotenberg",
   "type": "library",
@@ -12,7 +12,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CodeInc\\CloudrunGotenberg\\": "src"
+      "CodeInc\\CloudRunGotenberg\\": "src"
     }
   },
   "authors": [

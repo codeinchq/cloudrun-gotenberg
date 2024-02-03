@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace CodeInc\CloudrunGotenberg;
+namespace CodeInc\CloudRunGotenberg;
 
 use CodeInc\CloudrunAuthHttpClient\HttpClientFactory;
 use Gotenberg\Exceptions\GotenbergApiErrored;
