@@ -1,6 +1,6 @@
-# Code Inc. PDF converter PHP client
+# GCP Cloud Run Gotenberg for PHP 
 
-The library provides a `GotenbergClient` class that allows you to convert office files to PDF. It uses Code Inc.'s Cloud Run authentication library to authenticated the requests sent to a Cloud Run service  
+The PHP 8.2+ library provides an authenticated Gotenberg client using [`codeinc/cloudrun-auth-http-client`](https://packagist.org/packages/codeinc/cloudrun-auth-http-client) to be used with a [Gotenberg](https://gotenberg.dev/) service running on [Google Cloud Platform Cloud Run](https://cloud.google.com/run?hl=en).
 
 ## Installation
 
@@ -13,7 +13,9 @@ composer require codeinc/cloudrun-gotenberg
 
 ## Usage
 
-The library provides a `GotenbergClient` class that allows you to convert office files to PDF using the Code Inc. PDF converter service. 
+This library is modeled after the [official Gotenberg PHP client](https://packagist.org/packages/gotenberg/gotenberg-php). The methods of the class `CodeInc\CloudRunGotenberg\CloudRunGotenberg` are the same as the `Gotenberg\Gotenberg` class (but they are not `static`). 
+
+The requests are authenticated using [`codeinc/cloudrun-auth-http-client`](https://packagist.org/packages/codeinc/cloudrun-auth-http-client). A service account is required to authenticate the requests. Check [this page](https://github.com/codeinchq/cloudrun-auth-http-client?tab=readme-ov-file#usage) to learn how to create and authorized a service account and obtain the service account key.
 
 ```php
 use CodeInc\CloudRunGotenberg\CloudRunGotenberg;
@@ -21,24 +23,24 @@ use Gotenberg\Gotenberg;
 use Gotenberg\Stream;
 
 // Creates the Cloud Run Gotenberg client 
-$gotenberg = CloudRunGotenberg::fromUrlAndJsonKey(
+$cloudRunGotenberg = new CloudRunGotenberg(
     // Cloud Run service URL
     'https://my-service-12345-uc.a.run.app',
     // path to your service account key or array of credentials 
     '/path/to/your/service-account-key.json' 
-)
+);
 
 // The following examples are extracted from Gotenberg PHP client documentation
 // https://packagist.org/packages/gotenberg/gotenberg-php
 
 // Converts a target URL to PDF and saves it to a given directory.
-$filename = $gotenberg->save(
+$filename = $cloudRunGotenberg->save(
     Gotenberg::chromium($apiUrl)->pdf()->url('https://my.url'), 
     $pathToSavingDirectory
 );
 
 // Converts Office documents to PDF and merges them.
-$response = $gotenberg->send(
+$response = $cloudRunGotenberg->send(
     Gotenberg::libreOffice($apiUrl)
         ->merge()
         ->convert(
