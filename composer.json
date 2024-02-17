@@ -1,6 +1,6 @@
 {
   "name": "codeinc/cloudrun-gotenberg",
-  "version": "v1.3",
+  "version": "v1.4",
   "description": "Wrapper to use the Gotenberg HTTP client library with a CloudRun service",
   "homepage": "https://github.com/codeinchq/cloudrun-gotenberg",
   "type": "library",
