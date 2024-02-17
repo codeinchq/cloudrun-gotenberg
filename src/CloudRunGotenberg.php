@@ -1,11 +1,11 @@
 <?php
-/******************************************************************************
- * Copyright (c) 2020 Code Inc. - All Rights Reserved                         *
- * Unauthorized copying of this file, via any medium is strictly prohibited   *
- * Proprietary and confidential                                               *
- * Written by Joan Fabrégat <joan@codeinc.co>, 12/2020                        *
- * Visit https://www.codeinc.co for more information                          *
- ******************************************************************************/
+/*
+ * Copyright 2024 Code Inc. <https://www.codeinc.co>
+ *
+ * Use of this source code is governed by an MIT-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/MIT.
+ */
 
 declare(strict_types=1);
 
